@@ -9,8 +9,8 @@ class Notifier:
         # Email configuration would typically come from environment variables
         self.smtp_server = os.environ.get('SMTP_SERVER', 'smtp.gmail.com')
         self.smtp_port = int(os.environ.get('SMTP_PORT', 587))
-        self.sender_email = os.environ.get('SENDER_EMAIL', '')
-        self.sender_password = os.environ.get('SENDER_PASSWORD', '')
+        self.sender_email = os.environ.get('SENDER_EMAIL', 'munnartrip1128@gmail.com')
+        self.sender_password = os.environ.get('SENDER_PASSWORD', 'adim yqob kvci xrod')
     
     def send_alert(self, user, subject, message, send_email=True):
         """Send an alert to the user (console and optionally email)"""

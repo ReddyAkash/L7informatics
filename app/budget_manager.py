@@ -1,6 +1,6 @@
 from datetime import datetime
 from sqlalchemy.sql import func
-from .models import Budget, Category
+from app.models import Budget, Category
 
 class BudgetManager:
     def __init__(self, db_session, user):

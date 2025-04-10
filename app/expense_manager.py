@@ -1,7 +1,7 @@
 from datetime import datetime
 from sqlalchemy.sql import func
-from .models import Expense, Category, Budget
-from .notifier import Notifier
+from app.models import Expense, Category, Budget
+from app.notifier import Notifier
 
 class ExpenseManager:
     def __init__(self, db_session, user):
@@ -20,8 +20,8 @@ class ExpenseManager:
         expense = Expense(
             amount=amount,
             description=description,
-            user=self.user,
-            category=category,
+            user_id=self.user.id,
+            category_id=category.id,
             date=date
         )
         self.db_session.add(expense)

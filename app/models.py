@@ -12,6 +12,7 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     username = Column(String, unique=True, nullable=False)
     email = Column(String, unique=True, nullable=False)
+    password = Column(String, nullable=False)
     
     expenses = relationship("Expense", back_populates="user")
     budgets = relationship("Budget", back_populates="user")
