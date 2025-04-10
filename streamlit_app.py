@@ -165,22 +165,23 @@ elif menu == "👥 Group Expenses":
         status = "🟢 Gets" if balance > 0 else "🔴 Owes"
         st.write(f"{user}: {status} ₹{abs(balance):.2f}")
 
-    # --- Pie Chart for Balances ---
-    st.subheader("📊 Expense Share Chart")
-    # Filter out 0 values (optional)
-    non_zero_balances = {user: amount for user, amount in balances.items() if amount != 0}
+    # --- Bar Chart for Group Balances ---
+    st.subheader("📊 Group Balances (Bar Chart)")
 
-    if not non_zero_balances:
-        st.info("No balance data to display in chart.")
+    if not balances:
+      st.info("No balance data to show.")
     else:
-        df = pd.DataFrame({
-            'User': list(non_zero_balances.keys()),
-            'Balance': list(non_zero_balances.values())
-        })
-        fig, ax = plt.subplots()
-        ax.pie(df['Balance'], labels=df['User'], autopct='%1.1f%%', startangle=90)
-        ax.axis('equal')
-        st.pyplot(fig)
+      df = pd.DataFrame({
+        'User': list(balances.keys()),
+        'Balance': list(balances.values())
+    })
+
+    # Set username as index for better bar chart formatting
+    df.set_index('User', inplace=True)
+
+    # Show the bar chart
+    st.bar_chart(df)
+
 
     # --- Group Expense History ---
     st.subheader("🧾 Expense History")
